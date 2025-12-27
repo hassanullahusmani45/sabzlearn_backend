@@ -7,26 +7,34 @@ export const userSchema = new mongoose.Schema(
             required: true,
             minLength: 3,
             maxLength: 55,
+            trim: true
         },
         username: {
             type: String,
             required: true,
             minLength: 3,
             maxLength: 55,
+            trim: true,
+            lowercase: true,
+            unique: true
         },
         email: {
             type: String,
             required: true,
+            unique: true,
+            trim: true,
+            unique: true
+
         },
         password: {
             type: String,
             required: true,
-            minLength: 8,
-            maxLength: 15
         },
-        confirmpassword: {
-            type: "equal",
-            field: "password"
+        phone: {
+            type: Number,
+            required: true,
+            min: 10,
+            max: 12
         },
         role: {
             type: String,
@@ -34,7 +42,7 @@ export const userSchema = new mongoose.Schema(
             default: "USER"
         }
     },
-    { timestamps }
+    { timestamps: true }
 );
 
 export const userModel = mongoose.model("users", userSchema);
