@@ -60,7 +60,29 @@ export const register = async (req, res) => {
 
 
 export const login = async (req, res) => {
-    console.log("login");
+    const { identifier, password } = req.body;
+
+    const isUserFind = await userModel.findOne({
+        $or: [{ username: identifier }, { email: identifier }]
+    });
+    if (!isUserFind) {
+        res.status(401).json({
+            message: "user name or email is rong!"
+        });
+    }
+
+    const isValidPassword = await bcrypt.compare(password, isUserFind.password);
+    if (!isValidPassword) {
+        res.status(401).json({
+            message: "your password is rong!"
+        });
+    }
+    const accessToken = JWT.sign({ sub: isUserFind._id, role: isUserFind.role }, process.env.JWT_PRIVITKEY, {
+        algorithm: "HS256",
+        expiresIn: "5day"
+    });
+    console.log("login", isValidPassword);
+    res.status(200).json({ accessToken });
 }
 
 

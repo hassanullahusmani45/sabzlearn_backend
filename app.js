@@ -14,4 +14,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use("/auth", authRouter);
-app.use("/ban",banRouter);
+app.use("/users",banRouter);
