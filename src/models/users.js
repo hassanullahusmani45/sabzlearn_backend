@@ -31,10 +31,10 @@ export const userSchema = new mongoose.Schema(
             required: true,
         },
         phone: {
-            type: Number,
-            required: true,
-            min: 10,
-            max: 12
+            type: String,
+            minlength: 10,
+            maxlength: 12,
+            trim: true
         },
         role: {
             type: String,
