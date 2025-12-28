@@ -1,3 +1,4 @@
+import { banuserModel } from "../models/banuser.js";
 import { userModel } from "../models/users.js";
 import { validateRegister } from "../validators/register.js";
 import bcrypt from "bcrypt";
@@ -23,7 +24,13 @@ export const register = async (req, res) => {
             message: "Username or Email already exists!"
         });
     }
-
+    // is ban user?
+    const isBanUser = await banuserModel.findOne({ phone });
+    if (isBanUser) {
+        return res.status(409).json({
+            message: "This phone number is ban!"
+        });
+    }
     const usersCount = await userModel.countDocuments();
     const hasedPassword = await bcrypt.hash(password, 10);
 
