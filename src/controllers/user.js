@@ -97,3 +97,13 @@ export const updateUser = async (req, res) => {
         res.status(400).send({ error });
     }
 }
+
+
+export const updateUserRole = async (req, res) => {
+    const { id } = req.body;
+    const user = await userModel.findOne({ _id: id });
+    const updatedRole = user.role === "USER" ? "ADMIN" : "USER";
+    const updatedUser = await userModel.findByIdAndUpdate({ _id: id }, { role: updatedRole });
+
+    res.status(201).send({ updatedUser });
+}
