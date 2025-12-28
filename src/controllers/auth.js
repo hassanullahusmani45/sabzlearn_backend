@@ -81,7 +81,7 @@ export const login = async (req, res) => {
         algorithm: "HS256",
         expiresIn: "5day"
     });
-    console.log("login", isValidPassword);
+
     res.status(200).json({ accessToken });
 }
 
