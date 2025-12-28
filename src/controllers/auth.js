@@ -45,7 +45,7 @@ export const register = async (req, res) => {
     console.log("USER:", user);
     const { password: _, ...safeUser } = user.toObject();
 
-    const accessToken = JWT.sign({ sub: user._id, role: user.role }, process.env.JWT_PRIVITKEY, {
+    const accessToken = JWT.sign({ id: user._id, role: user.role }, process.env.JWT_PRIVITKEY, {
         algorithm: "HS256",
         expiresIn: "5day"
     });
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
             message: "your password is rong!"
         });
     }
-    const accessToken = JWT.sign({ sub: isUserFind._id, role: isUserFind.role }, process.env.JWT_PRIVITKEY, {
+    const accessToken = JWT.sign({ is: isUserFind._id, role: isUserFind.role }, process.env.JWT_PRIVITKEY, {
         algorithm: "HS256",
         expiresIn: "5day"
     });

@@ -1,7 +1,7 @@
 import express from "express";
 import { banUser } from "../controllers/user.js";
 
-export const banRouter = express.Router();
+export const userRouter = express.Router();
 
 
-banRouter.post("/ban",banUser);
+userRouter.post("/ban",banUser);
