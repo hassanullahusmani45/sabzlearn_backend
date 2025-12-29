@@ -1,6 +1,6 @@
 import Validator from "fastest-validator";
 
-const v = new Validator({ multi: false });
+const v = new Validator({ multi: false }); // { multi: false } 1_: is used for one filed one error select.
 
 const schema = {
     name: {

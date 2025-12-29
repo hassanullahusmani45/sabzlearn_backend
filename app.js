@@ -3,6 +3,7 @@ import { authRouter } from "./src/routes/auth.js";
 import cros from "cors";
 import bodyParser from "body-parser";
 import { userRouter } from "./src/routes/user.js";
+import { categoryRouter } from "./src/routes/category.js";
 export const app = express();
 
 // defult midellwares.
@@ -10,8 +11,6 @@ app.use(cros());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
+app.use("/category", categoryRouter);
