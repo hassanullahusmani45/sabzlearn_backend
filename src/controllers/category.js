@@ -78,6 +78,14 @@ export const updateCategory = async (req, res) => {
   }
   const { title = isFindCategory.title, url = isFindCategory.url } = req.body;
 
+  const result = validateCategory({ title, url });
+  if (result !== true) {
+    return res.status(409).json({
+      message: "Validation faild!",
+      error: result,
+    });
+  }
+
   try {
     const category = await categoryModel.updateOne({ _id: id }, { title, url });
     res.status(200).json({
