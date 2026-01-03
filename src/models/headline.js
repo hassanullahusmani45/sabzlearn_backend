@@ -15,4 +15,10 @@ const schema = new mongoose.Schema({
   },
 });
 
+schema.virtual("sessions", {
+  ref: "Session",
+  localField: "_id",
+  foreignField: "headline",
+});
+
 export const headlineModel = mongoose.model("Headline", schema);
