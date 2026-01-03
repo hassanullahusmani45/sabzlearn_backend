@@ -80,4 +80,9 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
+schema.virtual("headlines", {
+  ref: "Headline",
+  localField: "_id",
+  foreignField: "course",
+});
 export const courseModel = mongoose.model("Course", schema);

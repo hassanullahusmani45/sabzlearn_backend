@@ -121,8 +121,10 @@ export const update = async (req, res) => {
 export const getCourse = async (req, res) => {
   const course = await courseModel
     .findById(req.foundCourse._id)
-    .populate("category","-__v")
-    .populate("creator", "-password -__v -createdAt -updatedAt");
+    .populate("category", "-__v")
+    .populate("creator", "-password -__v -createdAt -updatedAt")
+    .populate("headlines")
+    .lean();
 
   res.status(200).json(course);
 };
