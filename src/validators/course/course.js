@@ -55,6 +55,17 @@ const schema = {
     type: "string",
     empty: false,
   },
+  price: {
+    type: "number",
+    optional: true,
+    min: 0,
+  },
+  discount: {
+    type: "number",
+    optional: true,
+    min: 0,
+    max: 100,
+  },
   $$strict: true,
 };
 
