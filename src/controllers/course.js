@@ -123,7 +123,15 @@ export const getCourse = async (req, res) => {
     .findById(req.foundCourse._id)
     .populate("category", "-__v")
     .populate("creator", "-password -__v -createdAt -updatedAt")
-    .populate("headlines")
+    .populate({
+      path: "headlines",
+      select: "title",
+      populate: {
+        path: "sessions",
+        select: "title time video isFree order",
+        options: { sort: { order: 1 } },
+      },
+    })
     .lean();
 
   res.status(200).json(course);
