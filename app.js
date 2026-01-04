@@ -7,6 +7,7 @@ import { categoryRouter } from "./src/routes/category.js";
 import { courseRouter } from "./src/routes/course.js";
 import { headlineRouter } from "./src/routes/headline.js";
 import { sessionRouter } from "./src/routes/session.js";
+import { commentRouter } from "./src/routes/comment.js";
 
 export const app = express();
 
@@ -21,3 +22,4 @@ app.use("/category", categoryRouter);
 app.use("/courses", courseRouter);
 app.use("/headline", headlineRouter);
 app.use("/session", sessionRouter);
+app.use("/comments", commentRouter);

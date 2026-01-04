@@ -153,6 +153,24 @@ export const getCourse = async (req, res) => {
         options: { sort: { order: 1 } },
       },
     })
+    .populate({
+      path: "comments",
+      select: "content author createdAt -course",
+      populate: [
+        {
+          path: "author",
+          select: "name username role",
+        },
+        {
+          path: "answers",
+          select: "content author createdAt",
+          populate: {
+            path: "author",
+            select: "name username role",
+          },
+        },
+      ],
+    })
     .lean();
 
   res.status(200).json(course);

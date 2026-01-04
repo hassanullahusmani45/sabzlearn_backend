@@ -95,4 +95,10 @@ schema.virtual("sessions", {
   localField: "_id",
   foreignField: "course",
 });
+
+schema.virtual("comments", {
+  ref: "Comment",
+  localField: "_id",
+  foreignField: "course",
+});
 export const courseModel = mongoose.model("Course", schema);
