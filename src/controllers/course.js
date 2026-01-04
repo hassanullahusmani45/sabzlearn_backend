@@ -1,7 +1,7 @@
 import { isValidObjectId } from "mongoose";
 import { validatorCourse } from "../validators/course/course.js";
 import { categoryModel } from "../models/category.js";
-import { courseModel } from "../models/cource.js";
+import { courseModel } from "../models/course.js";
 import { validatorCourseUpdate } from "../validators/course/course.update.js";
 
 export const create = async (req, res) => {

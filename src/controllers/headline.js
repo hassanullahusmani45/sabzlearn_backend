@@ -1,7 +1,7 @@
 import { isValidObjectId } from "mongoose";
 import { headlineModel } from "../models/headline.js";
 import { validateHeadline } from "../validators/headline.js";
-import { courseModel } from "../models/cource.js";
+import { courseModel } from "../models/course.js";
 
 export const createHeadline = async (req, res) => {
   const { title, course } = req.body;

@@ -1,4 +1,4 @@
-import { courseModel } from "../../models/cource.js";
+import { courseModel } from "../../models/course.js";
 
 export const checkCourseExists = async (req, res, next) => {
   const { id } = req.params;
