@@ -38,7 +38,7 @@ const schema = {
   courseNeed: {
     type: "string",
     empty: false,
-    min: 3,
+    min: 2,
     max: 255,
   },
   viewType: {
@@ -65,6 +65,10 @@ const schema = {
     optional: true,
     min: 0,
     max: 100,
+  },
+  cover: {
+    type: "string",
+    empty: false,
   },
   $$strict: true,
 };

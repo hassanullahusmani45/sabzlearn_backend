@@ -5,7 +5,7 @@ import { courseModel } from "../models/cource.js";
 import { validatorCourseUpdate } from "../validators/course/course.update.js";
 
 export const create = async (req, res) => {
-  const {
+  let {
     title,
     href,
     description,
@@ -20,7 +20,27 @@ export const create = async (req, res) => {
     discount,
   } = req.body;
 
-  const result = validatorCourse(req.body);
+  time = Number(time);
+  score = Number(score);
+  price = Number(price);
+  discount = Number(discount);
+  const cover = req.file?.filename;
+
+  const result = validatorCourse({
+    title,
+    href,
+    description,
+    status,
+    time,
+    support,
+    courseNeed,
+    viewType,
+    score,
+    category,
+    price,
+    discount,
+    cover,
+  });
   if (result !== true) {
     return res.status(400).json({
       message: "Validation failed",
@@ -48,6 +68,7 @@ export const create = async (req, res) => {
       description,
       status,
       time,
+      cover,
       support,
       courseNeed,
       viewType,

@@ -42,7 +42,7 @@ const schema = new mongoose.Schema(
     courseNeed: {
       type: String,
       required: true,
-      minlength: 3,
+      minlength: 2,
       maxlength: 255,
     },
     viewType: {
@@ -65,6 +65,10 @@ const schema = new mongoose.Schema(
       type: Number,
       min: 0,
       default: 0,
+    },
+    cover: {
+      type: String,
+      required: true,
     },
     category: {
       type: mongoose.Types.ObjectId,
