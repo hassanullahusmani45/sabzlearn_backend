@@ -155,6 +155,7 @@ export const getCourse = async (req, res) => {
     })
     .populate({
       path: "comments",
+      match: { minCommentID: null },
       select: "content author createdAt -course",
       populate: [
         {
